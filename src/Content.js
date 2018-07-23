@@ -21,6 +21,7 @@ class Content extends React.Component {
             2
           </div>
         </div>
+        <h1> Now i can start </h1>
 
         {/* ... */}
 
