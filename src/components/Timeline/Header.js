@@ -11,7 +11,7 @@ class Header extends React.Component {
         </div>
 
         <span className="title">
-          {this.props.title}
+          shiv
         </span>
 
         <input

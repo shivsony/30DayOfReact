@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
-// import Timeline from "./components/Timeline/Timeline";
+import Timeline from "./components/Timeline/Timeline";
 import Header from "./Header";
 import Content from "./Content";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'font-awesome/css/font-awesome.css';
+import Clock from './Clock';
+import FetchedTimeline from './FetchedTimeline';
+import Container from './Container';
 
 var activities = [
   {
@@ -39,11 +42,16 @@ class App extends React.Component {
       <div className="demo">
         <div className="notificationsFrame">
             <div className="panel">
+                <Timeline/>
+                <FetchedTimeline/>
+                {/*
                 <Header title="Timeline" />
                 <Header title="Profile" />
                 <Header title="Settings" />
                 <Header title="Chat" />
-                <Content activities={activities}/>
+                <Content activities={activities}/>*/}
+                <Container/>
+                <Clock/>
             </div>
         </div>
       </div>
