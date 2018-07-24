@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
 // import Timeline from "./components/Timeline/Timeline";
+import Footer from "./components/Timeline/Footer";
 import Header from "./Header";
 import Content from "./Content";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,16 +35,34 @@ var activities = [
 ]
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      refreshing: false
+    }
+  }
+  refresh() {
+    this.setState({refreshing: true})
+  }
+  onComponentRefresh() {
+    this.setState({refreshing: false});
+  }
   render() {
+    const {refreshing} = this.state;
     return (
       <div className="demo">
         <div className="notificationsFrame">
             <div className="panel">
                 <Header title="Timeline" />
-                <Header title="Profile" />
-                <Header title="Settings" />
-                <Header title="Chat" />
-                <Content activities={activities}/>
+                <Content
+                onComponentRefresh={this.onComponentRefresh.bind(this)} 
+                activities={activities}/>
+                <Footer>
+                  <button onClick={this.refresh.bind(this)}>
+                    <i className="fa fa-refresh" />
+                    Refresh
+                  </button>
+                </Footer>
             </div>
         </div>
       </div>
