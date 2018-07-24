@@ -1,31 +1,19 @@
 import React from 'react'
+import ActivityItem from './ActivityItem';
 
 class Content extends React.Component {
   render() {
+    const { activities } = this.props;
     return (
       <div className="content">
         <div className="line"></div>
-
-      {/* Timeline item */}
-        <div className="item">
-          <div className="avatar">
-            <img src="http://www.croop.cl/UI/twitter/images/doug.jpg" />
-            Doug
-          </div>
-
-          <span className="time">
-            An hour ago
-          </span>
-          <p>Ate lunch</p>
-          <div className="commentCount">
-            2
-          </div>
-        </div>
-        <h1> Now i can start </h1>
-
-        {/* ... */}
-
-      </div>
+        {activities.map( (activity) => {
+          return(
+            <ActivityItem activity={activity}/>
+          );
+        })
+      }
+    </div>
     )
   }
 }
