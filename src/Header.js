@@ -1,7 +1,30 @@
 import React from 'react'
-
+import SearchForm from './SearchForm';
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchVisible: false
+    }
+  }
+
+  // toggle visibility when run on the state
+  showSearch() {
+    this.setState({
+      searchVisible: !this.state.searchVisible
+    })
+  }
+
   render() {
+    // Classes to add to the <input /> element
+    var searchInputClasses = ["searchInput"];
+
+    // Update the class array if the state is visible
+    if (this.state.searchVisible) {
+      searchInputClasses.push("active");
+    }
+
     return (
       <div className="header">
         <div className="menuIcon">
@@ -14,12 +37,12 @@ class Header extends React.Component {
           {this.props.title}
         </span>
 
-        <input
-          type="text"
-          className="searchInput"
-          placeholder="Search ..." />
+        <SearchForm
+          searchVisible={this.state.searchVisible}
+          onSubmit={this.props.onSubmit} />
 
-        <div className="fa fa-search searchIcon"></div>
+        {/* Adding an onClick handler to call the showSearch button */}
+
       </div>
     )
   }
